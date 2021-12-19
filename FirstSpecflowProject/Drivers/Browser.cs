@@ -4,12 +4,17 @@ using OpenQA.Selenium.Firefox;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TechTalk.SpecFlow;
 
 namespace FirstSpecflowProject.Drivers
 {
     public class Browser
     {
         public IWebDriver driver = null;
+        private readonly ScenarioContext _scenarioContext;
+
+        public Browser(ScenarioContext scenarioContext) => _scenarioContext = scenarioContext;
+       
 
         public IWebDriver SetUp(string _browser)
         {
@@ -25,6 +30,7 @@ namespace FirstSpecflowProject.Drivers
                     driver = new ChromeDriver();
                     break;
             }
+
             return driver;
         }
     }
